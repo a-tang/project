@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   root "home#index"
   get "/about" => "home#about"
+  resources :competitions
+  resources :users, only: [:new, :create]
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
