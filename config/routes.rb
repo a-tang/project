@@ -1,10 +1,23 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
   root "home#index"
   get "/about" => "home#about"
+
   resources :competitions
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update, :destroy]
+
+  scope module: 'users' do
+    resources :password_resets, only: [:new, :create, :edit, :update]
+    resources :password_changes, only: [:edit, :update]
+    resources :account_verifications, only: [:new, :create, :edit]
+  end
+
+  resources :sessions, only: [:new, :create] do
+    delete :destroy, on: :collection
+  end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

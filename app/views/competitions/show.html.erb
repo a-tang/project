@@ -3,5 +3,11 @@
 <p><%= @competition.prize %></p>
 <p><%= @competition.created_at %></p>
 <p><%= @competition.end_date %></p>
+
+<% if can? :edit, @competition %>
 <%= link_to "Edit", edit_competition_path(@competition) %>
+<% end %>
+
+<% if can? :destroy, @competition %>
 <%= link_to "Delete", competition_path(@competition), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>

@@ -1,6 +1,8 @@
 class CompetitionsController < ApplicationController
   before_action :find_competition, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_user!, except: [:index, :show, :filter]
+
   def new
     @competition = Competition.new
   end
