@@ -1,18 +1,11 @@
-<div>
+
   <%= simple_form_for @competition do |f| %>
     <%= f.input :title %>
     <%= f.input :body %>
     <%= f.input :prize %>
     <%= f.input :end_date %>
-</div>
-
-<div>
-  <%= f.label :category %>
-  <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
-</div>
-
-<div>
-  <%= f.submit class: "btn btn-primary" %>
-</div>
-
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
+    <%= f.input :image %>
+    <%= f.submit class: "btn btn-primary" %>
 <% end %>

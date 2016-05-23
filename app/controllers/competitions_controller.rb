@@ -42,7 +42,7 @@ class CompetitionsController < ApplicationController
   private
 
   def competition_params
-    competition_params = params.require(:competition).permit([:title, :body, :prize, :end_date, :category_id])
+    competition_params = params.require(:competition).permit([:title, :body, :prize, :end_date, :image, :category_id])
   end
 
   def find_competition

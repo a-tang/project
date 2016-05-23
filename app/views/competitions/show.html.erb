@@ -11,3 +11,8 @@
 <% if can? :destroy, @competition %>
 <%= link_to "Delete", competition_path(@competition), method: :delete, data: {confirm: "Are you sure?"} %>
 <% end %>
+
+
+<% if @competition.image.present? %>
+  <%= image_tag @competition.image.url(:large) %>
+<% end %>
