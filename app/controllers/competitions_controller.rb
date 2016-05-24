@@ -5,6 +5,7 @@ class CompetitionsController < ApplicationController
 
   def new
     @competition = Competition.new
+    1.times { @competition.user_images.build }
   end
 
   def create
@@ -12,6 +13,9 @@ class CompetitionsController < ApplicationController
     if @competition.save
       redirect_to competition_path(@competition), notice: "Competition created successfully!"
     else
+      gen_count = 1 - @competition.user_images.size
+      gen_count.times { @competition.user_images.build }
+      flash[:alert] = "Problem!"
       render :new
     end
   end
@@ -42,7 +46,7 @@ class CompetitionsController < ApplicationController
   private
 
   def competition_params
-    competition_params = params.require(:competition).permit([:title, :body, :prize, :end_date, :image, :category_id])
+    competition_params = params.require(:competition).permit(:title, :body, :prize, :end_date, :category_id, user_images_attributes:[:id, :image, :_destroy])
   end
 
   def find_competition

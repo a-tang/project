@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523204136) do
+ActiveRecord::Schema.define(version: 20160524004449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,24 @@ ActiveRecord::Schema.define(version: 20160523204136) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
+  create_table "user_images", force: :cascade do |t|
+    t.string   "image"
+    t.integer  "competition_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "user_images", ["competition_id"], name: "index_user_images_on_competition_id", using: :btree
+
+  create_table "user_photos", force: :cascade do |t|
+    t.string   "photo"
+    t.integer  "competition_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "user_photos", ["competition_id"], name: "index_user_photos_on_competition_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -73,4 +91,6 @@ ActiveRecord::Schema.define(version: 20160523204136) do
 
   add_foreign_key "competitions", "categories"
   add_foreign_key "competitions", "users"
+  add_foreign_key "user_images", "competitions"
+  add_foreign_key "user_photos", "competitions"
 end

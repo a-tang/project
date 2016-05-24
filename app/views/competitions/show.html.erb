@@ -2,7 +2,7 @@
 <p><%= @competition.body %></p>
 <p><%= @competition.prize %></p>
 <p><%= @competition.created_at %></p>
-<p><%= @competition.end_date %></p>
+<p>Competition Deadline<%= @competition.end_date %></p>
 
 <% if can? :edit, @competition %>
 <%= link_to "Edit", edit_competition_path(@competition) %>

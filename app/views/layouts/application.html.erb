@@ -7,10 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+
   <%= link_to "Home", root_path %>
   |
   <%= link_to "About", about_path %>
   |
+  <%= link_to "Index", competitions_path %>
+  |  
   <%= link_to "Create Competition", new_competition_path %>
   |
   <% if user_signed_in? %>
@@ -28,5 +32,6 @@
   <% end %>
 <%= yield %>
 
+</div>
 </body>
 </html>

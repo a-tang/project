@@ -6,7 +6,8 @@ class Competition < ActiveRecord::Base
   validates :title, presence: true
   validates :prize, presence: true
 
-  mount_uploader :image, ImageUploader
+  has_many :user_images, dependent: :destroy
+  accepts_nested_attributes_for :user_images, reject_if: :all_blank, allow_destroy: true
 
 
   def user_full_name
