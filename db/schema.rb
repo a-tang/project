@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524004449) do
+ActiveRecord::Schema.define(version: 20160531050501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,22 @@ ActiveRecord::Schema.define(version: 20160524004449) do
   add_index "competitions", ["category_id"], name: "index_competitions_on_category_id", using: :btree
   add_index "competitions", ["user_id"], name: "index_competitions_on_user_id", using: :btree
 
+  create_table "contests", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "prize"
+    t.datetime "end_date"
+    t.boolean  "featured",    default: false
+    t.string   "image"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "category_id"
+    t.integer  "user_id"
+  end
+
+  add_index "contests", ["category_id"], name: "index_contests_on_category_id", using: :btree
+  add_index "contests", ["user_id"], name: "index_contests_on_user_id", using: :btree
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -55,6 +71,17 @@ ActiveRecord::Schema.define(version: 20160524004449) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "entries", force: :cascade do |t|
+    t.integer  "contest_id"
+    t.integer  "user_id"
+    t.string   "entered",    default: "f"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "entries", ["contest_id"], name: "index_entries_on_contest_id", using: :btree
+  add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
 
   create_table "user_images", force: :cascade do |t|
     t.string   "image"
@@ -87,10 +114,15 @@ ActiveRecord::Schema.define(version: 20160524004449) do
     t.datetime "password_reset_requested_at"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
+    t.string   "user_type"
   end
 
   add_foreign_key "competitions", "categories"
   add_foreign_key "competitions", "users"
+  add_foreign_key "contests", "categories"
+  add_foreign_key "contests", "users"
+  add_foreign_key "entries", "contests"
+  add_foreign_key "entries", "users"
   add_foreign_key "user_images", "competitions"
   add_foreign_key "user_photos", "competitions"
 end

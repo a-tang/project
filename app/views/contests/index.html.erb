@@ -1,0 +1,13 @@
+<h1>All Competitions</h1>
+
+<% @contest.each do |comps| %>
+  <div>
+    <h3>
+      <%= link_to comps.title, contest_path(comps) %>
+      <% if comps.image.present? %>
+        <%= image_tag comps.image.url(:thumb) %>
+      <% end %>
+      <hr>
+    </h3>
+  </div>
+<% end %>

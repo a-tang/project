@@ -9,29 +9,30 @@
 <body>
   <div class="container">
 
-  <%= link_to "Home", root_path %>
-  |
-  <%= link_to "About", about_path %>
-  |
-  <%= link_to "Index", competitions_path %>
-  |  
-  <%= link_to "Create Competition", new_competition_path %>
-  |
-  <% if user_signed_in? %>
-  Hello <%= current_user.first_name %>,
+    <%= link_to "Home", root_path %>
+    |
+    <%= link_to "About", about_path %>
+    |
+    <%= link_to "Index", competitions_path %>
+    |
+    <%= link_to "Create Competition", new_competition_path %>
+    |
+    <% if user_signed_in? %>
+    Hello <%= current_user.first_name %>,
     <%= link_to "Log out", sessions_path, method: :delete %>
-  <% else %>
+    <% else %>
     <%= link_to "Sign In", new_session_path %>
+    |
     <%= link_to "Sign Up", new_user_path %>
-  <% end %>
+    <% end %>
 
-  <% if notice %>
-  <div class="alert alert-success"><%= notice %></div>
+    <% if notice %>
+    <div class="alert alert-success"><%= notice %></div>
     <% elsif alert %>
-  <div class="alert alert-danger"><%= alert %></div>
-  <% end %>
-<%= yield %>
+    <div class="alert alert-danger"><%= alert %></div>
+    <% end %>
+    <%= yield %>
 
-</div>
+  </div>
 </body>
 </html>

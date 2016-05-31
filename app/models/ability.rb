@@ -8,7 +8,7 @@ class Ability
 
     alias_action :create, :read, :edit, :update, :to => :cru
 
-    can :cru, Competition do |comp|
+    can :cru, Contest do |comp|
       comp.user == user && user.persisted?
     end
 

@@ -1,0 +1,34 @@
+<h1><%= @contest.title %></h1>
+<p><%= @contest.body %></p>
+<p><%= @contest.prize %></p>
+<p><%= @contest.created_at %></p>
+<p>Competition Deadline<%= @contest.end_date %></p>
+
+<% if can? :edit, @contest %>
+<%= link_to "Edit", edit_contest_path(@contest) %>
+<% end %>
+
+<% if can? :destroy, @contest %>
+<%= link_to "Delete", contest_path(@contest), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
+
+
+<% if @contest.image.present? %>
+  <%= image_tag @contest.image.url(:large) %>
+<% end %>
+
+
+<% user_entry = @contest.entry_for(current_user) %>
+<% if user_entry && user_entry.entered? %>
+  <%= link_to "Un-do entry", contest_entry_path(@contest, user_entry),
+                               method: :delete %>
+
+<% elsif user_entry  %>
+ <%= link_to "Enter Contest", contest_entry_path(@contest, user_entry, {entry: {entered: true}}),
+                           method: :patch  %>
+
+<% else %>
+ <%= link_to "Enter Contest", contest_entries_path(@contest, {entry: {entered: true}}),
+                         method: :post %>
+<% end %>
+(<%= @contest.entry_value %>)

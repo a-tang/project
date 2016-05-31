@@ -1,0 +1,18 @@
+<%= simple_form_for @contest do |f| %>
+  <%= f.input :title %>
+  <%= f.input :body %>
+  <%= f.input :prize %>
+  <%= f.input :end_date %>
+  <%= f.label :category %>
+  <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
+<h2>Upload images</h2>
+<div id="user_images">
+  <%= f.simple_fields_for :user_images do |i| %>
+  <%= render 'user_image_fields', f: i %>
+  <% end %>
+  <div class="links">
+    <%= link_to_add_association 'Add image', f, :user_images %>
+  </div>
+</div>
+<%= f.submit class: "btn btn-primary" %>
+<% end %>
