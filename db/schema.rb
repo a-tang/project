@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531050501) do
+ActiveRecord::Schema.define(version: 20160531070502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160531050501) do
     t.datetime "updated_at",                  null: false
     t.integer  "category_id"
     t.integer  "user_id"
+    t.json     "images"
   end
 
   add_index "contests", ["category_id"], name: "index_contests_on_category_id", using: :btree
@@ -75,9 +76,9 @@ ActiveRecord::Schema.define(version: 20160531050501) do
   create_table "entries", force: :cascade do |t|
     t.integer  "contest_id"
     t.integer  "user_id"
-    t.string   "entered",    default: "f"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.boolean  "entered",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "entries", ["contest_id"], name: "index_entries_on_contest_id", using: :btree
@@ -88,9 +89,11 @@ ActiveRecord::Schema.define(version: 20160531050501) do
     t.integer  "competition_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "contest_id"
   end
 
   add_index "user_images", ["competition_id"], name: "index_user_images_on_competition_id", using: :btree
+  add_index "user_images", ["contest_id"], name: "index_user_images_on_contest_id", using: :btree
 
   create_table "user_photos", force: :cascade do |t|
     t.string   "photo"
@@ -124,5 +127,6 @@ ActiveRecord::Schema.define(version: 20160531050501) do
   add_foreign_key "entries", "contests"
   add_foreign_key "entries", "users"
   add_foreign_key "user_images", "competitions"
+  add_foreign_key "user_images", "contests"
   add_foreign_key "user_photos", "competitions"
 end

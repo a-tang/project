@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+    <script src="/assets/jquery-ui.js"></script>
+    <script src="/assets/jquery-ui.js"></script>
 </head>
 <body>
   <div class="container">
@@ -13,9 +15,11 @@
     |
     <%= link_to "About", about_path %>
     |
-    <%= link_to "Index", competitions_path %>
+    <%= link_to "Index", contests_path %>
     |
-    <%= link_to "Create Competition", new_competition_path %>
+    <%= link_to "Create Contest", new_contest_path %>
+    |
+    <%= link_to "Create Featured Contest", new_featured_contests_path	 %>
     |
     <% if user_signed_in? %>
     Hello <%= current_user.first_name %>,
@@ -33,6 +37,24 @@
     <% end %>
     <%= yield %>
 
+  </div>
+
+  <div class ="footer">
+    <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+      <div class="container">
+        <div class="navbar-text pull-left">
+          <p>© 2016 BigShark Design Studios</p>
+        </div>
+        <div class="navbar-text pull-right">
+          <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
+          <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+          <a href="#"><i class="fa fa-google-plus fa-2x"></i></a>
+          <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+          <a href="#"><i class="fa fa-amazon fa-2x"></i></a>
+          <a href="#"><i class="fa fa-github fa-2x"></i></a>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 </html>

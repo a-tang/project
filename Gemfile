@@ -14,7 +14,7 @@ gem 'chosen-rails'
 gem 'rails_12factor', group: :production
 gem 'simple_form'
 gem 'friendly_id'
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

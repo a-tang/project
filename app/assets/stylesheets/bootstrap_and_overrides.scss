@@ -4,4 +4,15 @@ $brand-primary: #25A3B2;
 $border-radius-base: 5px;
 
 @import "bootstrap-sprockets";
-@import "bootstrap"
+@import "bootstrap";
+
+.footer {
+  background-color:#25A3B2
+
+}
+
+.ui-datepicker .ui-icon { width: 32px; height: 32px;
+      background: image_path("prevNext.png")
+      top left no-repeat; }
+
+.ui-datepicker .ui-datepicker-next .ui-icon { background-position: 10px 32px; }

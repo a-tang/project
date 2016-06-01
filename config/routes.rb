@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :entries
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -7,7 +8,12 @@ Rails.application.routes.draw do
   root "home#index"
   get "/about" => "home#about"
 
-  resources :competitions
+  resources :contests do
+    resources :entries, only: [:create, :update, :destroy]
+    get "new_featured" => "contests#new_featured", as: :new_featured, on: :collection
+  end
+
+
   resources :users, only: [:new, :create, :edit, :update, :destroy]
 
   scope module: 'users' do
@@ -15,6 +21,8 @@ Rails.application.routes.draw do
     resources :password_changes, only: [:edit, :update]
     resources :account_verifications, only: [:new, :create, :edit]
   end
+
+  get "/customer/contests" => "customer#contests", as: :customer_contests
 
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection

@@ -1,0 +1,33 @@
+<h1>User Dashboard</h1>
+
+<div class="container-fluid">
+<table class="table table-striped" id="admin-table">
+  <thead>
+    <tr>
+      <th>Contests</th>
+      <th>Actions</th>
+      <th>Time left</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contests.each do |c| %>
+    <div>
+      <tr>
+       <td><%= link_to c.title, contest_path(c) %></td>
+       <td><%= link_to "Show", contest_path(c) %> |
+
+         <%= link_to "Edit", edit_contest_path(c)%> |
+
+         <%= link_to "Delete", contest_path(c),
+                             data: {confirm: "Are you sure?"},
+                             method: :delete%>
+
+         <td><%= c.end_date %></td>
+       </td>
+     </div>
+    <% end %>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p><%= link_to "Add", new_contest_path, class: "btn btn-primary"%></p>

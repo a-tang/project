@@ -28,11 +28,12 @@ class EntriesController < ApplicationController
 
   private
 
+  def entry
+    @entry ||= current_user.entries.find params[:id]
+  end
+  
   def contest
     @contest ||= Contest.find params[:contest_id]
   end
 
-  def entry
-    @entry ||= current_user.entries.find params[:id]
-  end
 end
