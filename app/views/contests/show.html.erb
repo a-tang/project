@@ -37,3 +37,15 @@
 <% end %>
 
 (<%= @contest.entry_value %>)
+
+<a class="btn btn-primary" data-popup-open="popup-1">  <%= link_to "Enter Contest", contest_entries_path(@contest, {entry: {entered: true}}), method: :post %></a>
+
+<div class="popup" data-popup="popup-1">
+    <div class="popup-inner">
+        <h2>Awesome! You've entered the competition</h2>
+        <h3>Good Luck!</h3>
+
+        <p><a data-popup-close="popup-1" href="#">Close</a></p>
+        <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+    </div>
+</div>

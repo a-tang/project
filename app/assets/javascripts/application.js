@@ -17,4 +17,5 @@
 //= require bootstrap/
 //= require chosen-jquery
 //= require cocoon
+//= require about
 //= require_tree .
