@@ -2,7 +2,7 @@
   <%= f.input :title %>
   <%= f.input :body %>
   <%= f.input :prize %>
-  <%= f.input :end_date, as: :string, input_html: {id: "datepicker"}  %>
+  <%= f.input :end_date, collection: ["3 days", "5 days", "7 days", "10 days"] %>
   <%= f.label :category %>
   <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
 <div id="user_images">
@@ -10,6 +10,7 @@
 </div>
 <h2>Upload images</h2>
 <%= f.submit class: "btn btn-primary" %>
+
 <% end %>
 
 
@@ -20,3 +21,8 @@ $(function() {
   });
 });
 </script>
+
+
+
+
+<%#= f.input :end_date, as: :string, input_html: {id: "datepicker"}  %>

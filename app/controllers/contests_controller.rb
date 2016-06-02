@@ -12,9 +12,9 @@ class ContestsController < ApplicationController
   end
 
   def create
-
     @contest = Contest.new contest_params
     @contest.user = current_user
+    @contest.end_date = DateTime.now + params[:contest][:end_date].to_i.days
     if @contest.save
       redirect_to contest_path(@contest), notice: "Contest created successfully!"
       gen_count = 1 - @contest.user_images.size
@@ -23,10 +23,16 @@ class ContestsController < ApplicationController
       flash[:alert] = "Problem!"
       render :new
     end
-    byebug
+
   end
 
   def show
+    @entry = Entry.new
+    respond_to do |format|
+      format.html { render }
+      format.json { render json: @contest.to_json }
+      format.xml  { render xml: @contest.to_xml }
+    end
   end
 
   def index
@@ -51,7 +57,6 @@ class ContestsController < ApplicationController
 
 
   private
-
 
   def contest_params
     contest_params = params.require(:contest).permit(:title, :body, :image, :prize, :end_date, :featured, :category_id, :user_id, {images:[]}, user_images_attributes: [:_destroy,

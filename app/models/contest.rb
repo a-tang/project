@@ -29,4 +29,9 @@ class Contest < ActiveRecord::Base
   def entry_for(user)
     entries.find_by_user_id user if user
   end
+
+  def deadline
+    
+  end
+
 end

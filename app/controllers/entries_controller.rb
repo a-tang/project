@@ -1,15 +1,27 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_contest
 
   def create
-    entry = Entry.new(entered: params[:entry][:entered], contest: contest, user: current_user)
-
-    if entry.save
-      redirect_to contest, notice: "Contest Entered!"
-    else
-      redirect_to contest, alert: "Can't enter contest!"
+    sleep 2
+    @contest        = Contest.find params[:contest_id]
+    entry_params    = params.require(:entry).permit(:entered)
+    @entry          = Entry.new entry_params
+    @entry.contest  = @contest
+    @entry.user     = current_user
+    # entry = Entry.new(entered: params[:entry][:entered], contest: contest, user: current_user)
+    # @entry.contest = @contest
+    # @entry.user = current_user
+    respond_to do |format|
+      if @entry.save
+        format.html { redirect_to contest_path(@contest),
+          notice: "Contest Entered!" }
+        else
+          flash[:alert] = "Can't enter contest!"
+          format.html { render "/contests/show" }
+        end
+      end
     end
-  end
 
   def update
     entry = current_user.entries.find params[:id]
@@ -29,10 +41,11 @@ class EntriesController < ApplicationController
   private
 
   def entry
-    @entry ||= current_user.entries.find params[:id]
+    # @entry ||= current_user.entries.find params[:id]
+
   end
-  
-  def contest
+
+  def find_contest
     @contest ||= Contest.find params[:contest_id]
   end
 

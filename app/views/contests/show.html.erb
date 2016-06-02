@@ -1,9 +1,9 @@
 <h1><%= @contest.title %></h1>
 <p><%= @contest.body %></p>
 <p><%= @contest.prize %></p>
-<p><%= @contest.created_at %></p>
-<p><%= @contest.end_date %></p>
-<p>Contest Deadline<%= @contest.end_date %></p>
+<p><% d = @contest.end_date - 25200 %>
+<%= d.strftime("%Y/%m/%d %H:%M")  %></p>
+
 
 <% if can? :edit, @contest %>
   <%= link_to "Edit", edit_contest_path(@contest) %>
@@ -33,19 +33,22 @@
 <% end %>
 
 <% else %>
-  <%= link_to "Enter Contest", contest_entries_path(@contest, {entry: {entered: true}}), method: :post %>
-<% end %>
 
-(<%= @contest.entry_value %>)
+  <%= link_to "Enter Contest", contest_entries_path(@contest, {entry: {entered: true}}), method: :post, :class => "btn btn-primary", :'data-popup-open' => 'popup-1', remote: true %>
 
-<a class="btn btn-primary" data-popup-open="popup-1">  <%= link_to "Enter Contest", contest_entries_path(@contest, {entry: {entered: true}}), method: :post %></a>
+
+<a class="btn btn-primary" data-popup-open="popup-1"><strong>Enter Competition</strong></a>
+
 
 <div class="popup" data-popup="popup-1">
     <div class="popup-inner">
-        <h2>Awesome! You've entered the competition</h2>
+        <h2>Hello</h2>
         <h3>Good Luck!</h3>
 
         <p><a data-popup-close="popup-1" href="#">Close</a></p>
         <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
     </div>
 </div>
+<% end %>
+
+(<%= @contest.entry_value %>)

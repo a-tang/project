@@ -6,7 +6,8 @@
     <tr>
       <th>Contests</th>
       <th>Actions</th>
-      <th>Time left</th>
+      <th>Ending</th>
+      <th>Number of entries</th>
     </tr>
   </thead>
   <tbody>
@@ -22,8 +23,14 @@
                              data: {confirm: "Are you sure?"},
                              method: :delete%>
 
-         <td><%= c.end_date %></td>
+        <td><% if c.end_date && c.end_date >= DateTime.now %>
+            <% d = c.end_date - 25200 %>
+            <strong><%= d.strftime("%Y/%m/%d %H:%M")%></strong>
+            <% else %>
+            <%= "finished" %>
+            <% end %></td>
        </td>
+       <td><%= c.entry_value %></td>
      </div>
     <% end %>
     </tr>
