@@ -2,6 +2,13 @@
 
 <%= render "user_errors" %>
 
+t.string   "user_type"
+t.string   "company_name"
+t.string   "company_address"
+t.text     "company_overview"
+t.string   "company_website"
+t.string   "company_phone_number"
+
 <%= f.input :featured, as: :hidden, input_html: {value: "true"} %>
 
 <%= form_for @user, :html => {class: "form-horizontal"} do |f| %>

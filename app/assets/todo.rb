@@ -21,3 +21,8 @@
 
 
 # TODO: Styling
+
+
+# TODO: finish adding customer field
+
+# TODO: fix github
