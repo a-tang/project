@@ -4,10 +4,11 @@
   <%= f.input :body %>
   <%= f.input :prize %>
   <%= f.input :featured, as: :hidden, input_html: {value: "true"} %>
-  <%= f.input :end_date, as: :string, input_html: {id: "datepicker"}  %>
+  <%= f.input :end_date, collection: ["3 days", "5 days", "7 days", "10 days"] %>
   <%= f.label :category %>
   <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
   <%= f.file_field :images , multiple: true %>
+
 <h2>Upload images</h2>
 <div class="links">
   <%= link_to_add_association 'Add image', f, :user_images %>

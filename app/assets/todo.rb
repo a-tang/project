@@ -6,7 +6,6 @@
 # TODO: Seperate sign in for customer + users
 # TODO: display pictures properly
 
-# TODO: implement voting feature (button). Not working properly. Button to dissapear once voted, and it should show that the the user has enterd contest.
 
 # TODO: Show Draft and published feature on user dashboard (AASM)
 # TODO: AJAXify voting
@@ -15,5 +14,10 @@
 # TODO: vote with social medial link (share)
 # TODO: date and time cannot be in the past (default to 7 days ahead)
 # TODO: pick random winner
+
+# TODO: Make 'entered' appear via AJAX % Enter button fade & disabled after closing Modal from
+
+# TODO: implement voting feature (button). Not working properly. Button to dissapear once voted, and it should show that the the user has enterd contest.
+
 
 # TODO: Styling

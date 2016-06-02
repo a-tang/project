@@ -1,8 +1,10 @@
 <h1><%= @contest.title %></h1>
 <p><%= @contest.body %></p>
 <p><%= @contest.prize %></p>
-<p><% d = @contest.end_date - 25200 %>
-<%= d.strftime("%Y/%m/%d %H:%M")  %></p>
+<% if @contest.end_date && @contest.end_date >= DateTime.now %>
+<% d = @contest.end_date - 25200 %>
+<p><%= d.strftime("%Y/%m/%d %H:%M")  %></p>
+<% end %>
 
 
 <% if can? :edit, @contest %>
@@ -35,9 +37,6 @@
 <% else %>
 
   <%= link_to "Enter Contest", contest_entries_path(@contest, {entry: {entered: true}}), method: :post, :class => "btn btn-primary", :'data-popup-open' => 'popup-1', remote: true %>
-
-
-<a class="btn btn-primary" data-popup-open="popup-1"><strong>Enter Competition</strong></a>
 
 
 <div class="popup" data-popup="popup-1">
