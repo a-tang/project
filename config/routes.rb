@@ -9,12 +9,14 @@ Rails.application.routes.draw do
   get "/about" => "home#about"
 
   resources :contests do
+    patch "publish" => "contests#publish", as: :publish
     resources :entries, only: [:create, :update, :destroy]
     get "new_featured" => "contests#new_featured", as: :new_featured, on: :collection
   end
 
 
   resources :users, only: [:new, :create, :edit, :update, :destroy]
+  get "/users/new_customer" => "users#new_customer", as: :new_customer
 
   scope module: 'users' do
     resources :password_resets, only: [:new, :create, :edit, :update]

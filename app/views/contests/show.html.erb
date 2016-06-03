@@ -36,7 +36,10 @@
 
 <% else %>
 
-  <%= link_to "Enter Contest", contest_entries_path(@contest, {entry: {entered: true}}), method: :post, :class => "btn btn-primary", :'data-popup-open' => 'popup-1', remote: true %>
+  <%#= link_to "Enter Contest", contest_entries_path(@contest, {entry: {entered: true}}), method: :post, :class => "btn btn-primary", :'data-popup-open' => 'popup-1', remote: true %>
+
+<% if @contest.end_date && @contest.end_date >= DateTime.now %>
+<a class="btn btn-primary" data-popup-open="popup-1" href="#"><strong>Enter Contest</strong></a>
 
 
 <div class="popup" data-popup="popup-1">
@@ -44,10 +47,14 @@
         <h2>Hello</h2>
         <h3>Good Luck!</h3>
 
-        <p><a data-popup-close="popup-1" href="#">Close</a></p>
-        <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+        <span><%= link_to "Yes", contest_entries_path(@contest, {entry: {entered: true}}), method: :post, class: "btn btn-primary", :'data-popup-open' => 'popup-1' %></span>
+
+        <span><a data-popup-close="popup-1" href="#", class="btn btn-primary">Maybe later</a></span>
+
+
     </div>
 </div>
-<% end %>
 
 (<%= @contest.entry_value %>)
+<% end %>
+<% end %>

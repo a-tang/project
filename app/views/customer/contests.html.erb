@@ -1,12 +1,54 @@
 <h1>User Dashboard</h1>
-
 <div class="container-fluid">
+  <h2>Live Contests</h2>
+  <table class="table table-striped" id="admin-table">
+    <thead>
+      <tr>
+        <th>Contests</th>
+        <th>Actions</th>
+        <th>Time Ending</th>
+        <th>Number of entries</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @contests.each do |c| %>
+      <div>
+        <tr>
+         <td><%= link_to c.title, contest_path(c) %></td>
+         <td><%= link_to "Show", contest_path(c) %> |
+
+           <%= link_to "Edit", edit_contest_path(c)%> |
+
+           <%= link_to "Delete", contest_path(c),
+                               data: {confirm: "Are you sure?"},
+                               method: :delete%>
+            <% if c.published == true %>
+            <% else %>
+           | <%= link_to "Publish", contest_publish_path(c), method: :patch %>
+           <% end %>
+                             </td>
+
+          <td><% if c.end_date && c.end_date >= DateTime.now %>
+              <% d = c.end_date - 25200 %>
+              <strong><%= d.strftime("%Y/%m/%d %H:%M")%></strong>
+              <% else %>
+              <%= "finished" %>
+              <% end %></td>
+
+         <td><span class="label label-default label-pill pull"><%= c.entry_value %></span></td>
+       </div>
+      <% end %>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Previous Contests</h2>
 <table class="table table-striped" id="admin-table">
   <thead>
     <tr>
       <th>Contests</th>
       <th>Actions</th>
-      <th>Ending</th>
+      <th>Time Ending</th>
       <th>Number of entries</th>
     </tr>
   </thead>
@@ -22,6 +64,11 @@
          <%= link_to "Delete", contest_path(c),
                              data: {confirm: "Are you sure?"},
                              method: :delete%>
+          <% if c.published == true %>
+          <% else %>
+         | <%= link_to "Publish", contest_publish_path(c), method: :patch %>
+         <% end %>
+                           </td>
 
         <td><% if c.end_date && c.end_date >= DateTime.now %>
             <% d = c.end_date - 25200 %>
@@ -29,12 +76,16 @@
             <% else %>
             <%= "finished" %>
             <% end %></td>
-       </td>
-       <td><%= c.entry_value %></td>
+
+       <td><span class="label label-default label-pill pull"><%= c.entry_value %></span></td>
      </div>
     <% end %>
     </tr>
   </tbody>
 </table>
-</div>
 <p><%= link_to "Add", new_contest_path, class: "btn btn-primary"%></p>
+</div>
+
+
+<%= paginate @contests %>
+<%= page_entries_info @contests %>

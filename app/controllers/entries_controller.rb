@@ -3,7 +3,6 @@ class EntriesController < ApplicationController
   before_action :find_contest
 
   def create
-    sleep 2
     @contest        = Contest.find params[:contest_id]
     entry_params    = params.require(:entry).permit(:entered)
     @entry          = Entry.new entry_params

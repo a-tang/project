@@ -4,6 +4,7 @@ class ContestsController < ApplicationController
 
   def new_featured
     @contest = Contest.new
+    1.times { @contest.user_images.build }
   end
 
   def new
@@ -36,7 +37,8 @@ class ContestsController < ApplicationController
   end
 
   def index
-    @contest = Contest.all
+    @contest = Contest.all.order("end_date DESC")
+    @contest = @contest.page(params[:page]).per(7)
   end
 
   def edit
@@ -55,16 +57,27 @@ class ContestsController < ApplicationController
     redirect_to contests_path
   end
 
+  def publish
+    @contest = Contest.find params[:contest_id]
+    @contest.update(published: true)
+    if @contest.save
+      redirect_to customer_contests_path(@contest), notice: "Published!"
+    else
+      flash[:alert] = "Problem!"
+      render @contest
+    end
+
+  end
 
   private
 
   def contest_params
-    contest_params = params.require(:contest).permit(:title, :body, :image, :prize, :end_date, :featured, :category_id, :user_id, {images:[]}, user_images_attributes: [:_destroy,
-:image])
+    contest_params = params.require(:contest).permit(:title, :body, :image, :prize, :end_date, :featured, :category_id, :published, :user_id, {images:[]}, user_images_attributes: [:_destroy, :image])
   end
 
   def find_contest
     @contest = Contest.find params[:id]
   end
+
 
 end

@@ -7,8 +7,19 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  with_options if: :customer? do |customer|
+    customer.validates :company_name, presence: true
+    customer.validates :company_address, presence: true
+    customer.validates :company_phone_number, presence: true
+    customer.validates :company_address, presence: true
+  end
+
   VALID_EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, uniqueness: true, presence: true, format: VALID_EMAIL_REGEX
+
+  def customer?
+    user_type == "customer"
+  end
 
   def full_name
    "#{first_name} #{last_name}"
