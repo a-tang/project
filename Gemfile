@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
+
+gem 'twitter'
+gem 'catpants', '2.2.0'
+gem 'omniauth-twitter'
 gem 'kaminari-bootstrap'
 gem 'kaminari', '~> 0.16.1'
 gem 'pry'

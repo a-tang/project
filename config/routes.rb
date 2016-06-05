@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get "/auth/twitter", as: :sign_in_with_twitter
+  get "/auth/twitter/callback" => "callbacks#twitter"
+
   resources :entries
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -10,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :edit, :update, :destroy]
 
-    resources :contests, only: [:new, :create, :edit, :update, :destroy] do
+    resources :contests  do
       patch "publish" => "contests#publish", as: :publish
       resources :entries, only: [:create, :update, :destroy]
       get "new_featured" => "contests#new_featured", as: :new_featured, on: :collection

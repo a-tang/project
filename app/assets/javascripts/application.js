@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-
+//= require catpants
 //= require bootstrap/
 //= require chosen-jquery
 //= require cocoon
