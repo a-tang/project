@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'kaminari-bootstrap'
 gem 'kaminari', '~> 0.16.1'
 gem 'pry'
 gem 'cocoon'

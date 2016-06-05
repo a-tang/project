@@ -1,4 +1,4 @@
-<%= simple_form_for @contest do |f| %>
+<%= simple_form_for @contest, :html => {:multipart => true } do |f| %>
   <%= f.input :title %>
   <%= f.input :body %>
   <%= f.input :prize %>
@@ -16,14 +16,14 @@
 
 <% end %>
 
-
+<!-- 
 <script>
 $(function() {
   $( "#datepicker" ).datepicker({
     inline: true
   });
 });
-</script>
+</script> -->
 
 
 

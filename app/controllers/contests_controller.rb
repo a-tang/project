@@ -17,9 +17,7 @@ class ContestsController < ApplicationController
     @contest.user = current_user
     @contest.end_date = DateTime.now + params[:contest][:end_date].to_i.days
     if @contest.save
-      redirect_to contest_path(@contest), notice: "Contest created successfully!"
-      gen_count = 1 - @contest.user_images.size
-      gen_count.times { @contest.user_images.build }
+      redirect_to customer_contests_path, notice: "Contest created successfully!"
     else
       flash[:alert] = "Problem!"
       render :new
@@ -38,15 +36,18 @@ class ContestsController < ApplicationController
 
   def index
     @contest = Contest.all.order("end_date DESC")
-    @contest = @contest.page(params[:page]).per(7)
   end
 
   def edit
   end
 
   def update
+    @contest = Contest.new contest_params
+    @contest.user = current_user
+    @contest.end_date = DateTime.now + params[:contest][:end_date].to_i.days
+    byebug
     if @contest.update contest_params
-      redirect_to contest_path(@contest)
+      redirect_to customer_contests_path, notice: "Contest created successfully!"
     else
       render :edit
     end
@@ -61,7 +62,7 @@ class ContestsController < ApplicationController
     @contest = Contest.find params[:contest_id]
     @contest.update(published: true)
     if @contest.save
-      redirect_to customer_contests_path(@contest), notice: "Published!"
+      redirect_to customer_contests_path, notice: "Published!"
     else
       flash[:alert] = "Problem!"
       render @contest

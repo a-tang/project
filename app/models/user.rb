@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
    user ? user.full_name : ""
   end
 
+  def user_company_name
+    company_name ? company_name : ""
+  end
+
   def generate_password_reset_data
     generate_password_reset_token
     self.password_reset_requested_at = Time.now

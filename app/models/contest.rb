@@ -25,13 +25,18 @@ class Contest < ActiveRecord::Base
   def user_full_name
     user ? user.full_name : ""
   end
+  # 
+  # def user_company_name
+  #   byebug
+  #   company_name ? company_name : ""
+  # end
 
   def entry_for(user)
     entries.find_by_user_id user if user
   end
 
   def deadline
-    
+
   end
 
 end
