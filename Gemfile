@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'omniauth-facebook'
 gem 'twitter'
 gem 'catpants', '2.2.0'
 gem 'omniauth-twitter'

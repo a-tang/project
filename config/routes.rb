@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get "/auth/facebook", as: :sign_in_with_facebook
+  get "/auth/facebook/callback" => "callbacks#facebook"
+
   get "/auth/twitter", as: :sign_in_with_twitter
   get "/auth/twitter/callback" => "callbacks#twitter"
 
