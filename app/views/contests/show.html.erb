@@ -31,7 +31,7 @@
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                    <div class="item active" style="width:750px;height:500px">
+                    <div class="item active" style="">
                         <img class="img-responsive">
                         <% if @contest.image.present? %>
                         <%= image_tag @contest.image.url%>
@@ -106,8 +106,8 @@
 
             <div class="popup" data-popup="popup-1">
                 <div class="popup-inner">
-                    <h2>Hello</h2>
-                    <h3>Good Luck!</h3>
+                    <h2>Awesome! You've entered the competition</h2>
+                    <h3>Good Luck! Don't forget to share this contest to increase your chances of winning!</h3>
 
                     <span><%= link_to "Yes", contest_entries_path(@contest, {entry: {entered: true}}), method: :post, class: "btn btn-primary", :'data-popup-open' => 'popup-1' %></span>
 
@@ -117,12 +117,23 @@
                 </div>
             </div>
 
+            <div class="addthis_sharing_toolbox"></div>
             <% end %>
           <% end %>
 
-        </div>
 
-    </div>
+
+        </div>
+      </div>
+
+      <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="135px" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+      <a class="twitter-share-button"
+        href="https://twitter.com/intent/tweet?text=Hello%20world"
+        data-size="large">
+      Tweet</a>
+
+
     <!-- /.row -->
 
     <!-- Related Projects Row -->
@@ -141,11 +152,6 @@
           </div>
           <%# end %>
         </div>
-
-
-
     </div>
-    <!-- /.row -->
-
 </div>
-<!-- /.container -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-575506bb22a5f72e"></script>

@@ -25,6 +25,9 @@ Rails.application.routes.draw do
 
 
   get "/users/new_customer" => "users#new_customer", as: :new_customer
+  get "/users/edit_customer" => "users#edit_customer", as: :edit_customer
+  # delete "/users/edit_customer" => "users#edit_customer", as: :delete_customer
+
 
   scope module: 'users' do
     resources :password_resets, only: [:new, :create, :edit, :update]

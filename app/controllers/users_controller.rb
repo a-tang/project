@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit_customer
+    @user = User.find_by_id params[:id]
+    render "edit"
+  end
 
   def edit
     @user = User.find_by_id params[:id]

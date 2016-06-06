@@ -45,7 +45,7 @@ class ContestsController < ApplicationController
     @contest = Contest.new contest_params
     @contest.user = current_user
     @contest.end_date = DateTime.now + params[:contest][:end_date].to_i.days
-    byebug
+    
     if @contest.update contest_params
       redirect_to customer_contests_path, notice: "Contest created successfully!"
     else

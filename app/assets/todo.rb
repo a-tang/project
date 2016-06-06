@@ -9,18 +9,19 @@
 # TODO: Make 'entered' appear via AJAX % Enter button fade & disabled after closing Modal from
 # TODO: implement voting feature (button). Not working properly. Button to dissapear once voted, and it should show that the the user has enterd contest.
 # TODO: Styling
-# TODO: circle notification with bootstrap for number of votes
 # TODO: show page to show the winner
 # TODO: admin can view the show page and see live analytics
 # TODO: enter contest button should be disabled once the user enter the contest (customer cannot enter their own contest)
 # TODO: Rails ajax the published contest
 # TODO: image display still not woking!!
 # TODO: Not updating
+# TODO: Add share links on Competition modal form
 
 # NOT SO IMPORTANT
 
 # TODO: Add count down timer
 # TODO: Allow for organisations to create tags?
+# TODO: circle notification with bootstrap for number of votes
 
 # COMPLETED
 

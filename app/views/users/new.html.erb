@@ -1,11 +1,13 @@
+<center>
 <h1>Create User</h1>
 
 <%= simple_form_for @user do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name, required: true %>
-  <%= f.input :email, required: true %>
-  <%= f.input :password, required: true %>
-  <%= f.input :password_confirmation, required: true %>
+  <%= f.input :first_name, label: false, placeholder: 'First name', required: true  %>
+  <%= f.input :last_name, label: false, placeholder: 'Last name', required: true %>
+  <%= f.input :email, label: false, placeholder: 'Email', required: true  %>
+  <%= f.input :password, label: false, placeholder: 'Password', required: true  %>
+  <%= f.input :password_confirmation, label: false, placeholder: 'Password confirmation', required: true  %>
 <%= f.submit class: "btn btn-primary" %>
 
 <% end %>
+</center>

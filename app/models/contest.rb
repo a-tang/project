@@ -25,9 +25,9 @@ class Contest < ActiveRecord::Base
   def user_full_name
     user ? user.full_name : ""
   end
-  # 
+  #
   # def user_company_name
-  #   byebug
+  #   
   #   company_name ? company_name : ""
   # end
 
