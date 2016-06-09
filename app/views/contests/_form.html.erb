@@ -7,14 +7,13 @@
   <br>
   <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
   <br>
+  <h2>Upload image</h2>
 
 <div id="user_images">
-    <%= f.label :image , "Upload image:" %>
   <%= f.file_field :image%>
 </div>
 
-<h2>Upload image</h2>
-
+<br>
 <%= f.submit class: "btn btn-primary" %>
 
 <% end %>

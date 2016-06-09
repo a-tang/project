@@ -8,12 +8,12 @@
   <%= f.label :category %>
   <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
 
+  <h2>Upload images</h2>
 <div id="user_images">
   <%= f.label :image, "Upload images:" %>
   <%= f.file_field :image, multiple: true, name: "contest[image]" %>
 </div>
 
-<h2>Upload images</h2>
 <div class="links">
   <%= link_to_add_association 'Add image', f, :user_images %>
 </div>
