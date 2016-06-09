@@ -13,10 +13,16 @@ class ContestsController < ApplicationController
   end
 
   def create
+
     @contest = Contest.new contest_params
     @contest.user = current_user
     @contest.end_date = DateTime.now + params[:contest][:end_date].to_i.days
     if @contest.save
+        if params[:images]
+            params[:images].each { |image|
+              @contest.create(image: image)
+            }
+        end
       redirect_to customer_contests_path, notice: "Contest created successfully!"
     else
       flash[:alert] = "Problem!"
@@ -39,13 +45,14 @@ class ContestsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
     @contest = Contest.new contest_params
     @contest.user = current_user
     @contest.end_date = DateTime.now + params[:contest][:end_date].to_i.days
-    
+
     if @contest.update contest_params
       redirect_to customer_contests_path, notice: "Contest created successfully!"
     else
@@ -54,7 +61,7 @@ class ContestsController < ApplicationController
   end
 
   def destroy
-    @contest.destroy
+    @contest.delete
     redirect_to contests_path
   end
 
@@ -73,7 +80,7 @@ class ContestsController < ApplicationController
   private
 
   def contest_params
-    contest_params = params.require(:contest).permit(:title, :body, :image, :prize, :end_date, :featured, :category_id, :published, :user_id, {images:[]}, user_images_attributes: [:_destroy, :image])
+    contest_params = params.require(:contest).permit(:title, :body, :image, :prize, :end_date, :featured, :category_id, :published, :user_id, {image:[]}, user_images_attributes: [:_destroy, :image])
   end
 
   def find_contest

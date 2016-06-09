@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605225421) do
+ActiveRecord::Schema.define(version: 20160607185604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,9 @@ ActiveRecord::Schema.define(version: 20160605225421) do
     t.string   "twitter_token"
     t.string   "twitter_secret"
     t.text     "twitter_raw_data"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.string   "images"
   end
 
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", using: :btree

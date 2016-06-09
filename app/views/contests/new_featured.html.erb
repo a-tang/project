@@ -1,5 +1,5 @@
 <h1>Featured Contest</h1>
-<%= simple_form_for @contest do |f| %>
+<%= simple_form_for @contest, :html => {:multipart => true } do |f| %>
   <%= f.input :title %>
   <%= f.input :body %>
   <%= f.input :prize %>
@@ -7,7 +7,11 @@
   <%= f.input :end_date, collection: ["3 days", "5 days", "7 days", "10 days"] %>
   <%= f.label :category %>
   <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
-  <%= f.file_field :images , multiple: true %>
+
+<div id="user_images">
+  <%= f.label :image, "Upload images:" %>
+  <%= f.file_field :image, multiple: true, name: "contest[image]" %>
+</div>
 
 <h2>Upload images</h2>
 <div class="links">
