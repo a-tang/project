@@ -2,13 +2,13 @@
 
   <h2>Draft Contests</h2>
 
-  <table class="table table-striped" id="admin-table">
+  <table class="table table-hover" id="admin-table">
 
     <thead>
       <tr>
-        <th>Contests</th>
-        <th>Actions</th>
-        <th>Publish</th>
+        <th class="col-md-4 col-sm-4">Contests</th>
+        <th class="col-md-3 col-sm-4">Actions</th>
+        <th class="col-md-4 col-sm-4">Publish</th>
       </tr>
     </thead>
     <tbody>
@@ -24,8 +24,6 @@
             data: {confirm: "Are you sure?"},
             method: :delete%>
           </td>
-
-
 
           <td> <% if c.published == true %>
             <% else %>

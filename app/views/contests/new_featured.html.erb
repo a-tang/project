@@ -8,27 +8,17 @@
   <%= f.label :category %>
   <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
 
-  <h2>Upload images</h2>
-<div id="user_images">
-  <%= f.label :image, "Upload images:" %>
-  <%= f.file_field :image, multiple: true, name: "contest[image]" %>
-</div>
+  <h2>Upload image</h2>
 
-<div class="links">
-  <%= link_to_add_association 'Add image', f, :user_images %>
-</div>
+  <div id="user_images">
+    <%= f.label :image, "Upload image:" %>
+    <%= f.file_field :image, multiple: true, name: "contest[image]" %>
+  </div>
+
+  <div class="links">
+    <%= link_to_add_association 'Add image', f, :user_image %>
+  </div>
+
 <%= f.submit class: "btn btn-primary" %>
+
 <% end %>
-
-<script>
-$(function() {
-  $( "#datepicker" ).datepicker();
-});
-</script>
-
-<!-- <div id="user_images"> -->
-
-  <%#= f.simple_fields_for :user_images do |i| %>
-  <%#= render 'user_image_fields', f: i %>
-  <%# end %>
-<!-- </div> -->

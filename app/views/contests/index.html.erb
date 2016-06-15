@@ -16,7 +16,6 @@
     <% @contest.each do |comps| %>
       <% if comps.end_date && comps.end_date >= DateTime.now %>
 
-
           <div class="row">
             <div class="col-md-7 index_image">
                 <%= link_to contest_path(comps) do %>
@@ -37,34 +36,6 @@
           </div>
         <hr>
         <% end %>
-
     <% end %>
-    <div class="row text-center">
-        <div class="col-lg-12">
-            <ul class="pagination">
-                <li>
-                    <a href="#">&laquo;</a>
-                </li>
-                <li class="active">
-                    <a href="#">1</a>
-                </li>
-                <li>
-                    <a href="#">2</a>
-                </li>
-                <li>
-                    <a href="#">3</a>
-                </li>
-                <li>
-                    <a href="#">4</a>
-                </li>
-                <li>
-                    <a href="#">5</a>
-                </li>
-                <li>
-                    <a href="#">&raquo;</a>
-                </li>
-            </ul>
-        </div>
-    </div>
   </div>
 </div>

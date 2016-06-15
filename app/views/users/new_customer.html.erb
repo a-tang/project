@@ -9,7 +9,7 @@
   <%= f.input :company_phone_number, required: true %>
   <%= f.input :password, required: true %>
   <%= f.input :password_confirmation, required: true %>
-    <%= f.input :user_type, as: :hidden, input_html: {value: "customer"} %>
+  <%= f.input :user_type, as: :hidden, input_html: {value: "customer"} %>
   <%= f.input :first_name, as: :hidden, input_html: {value: "n/a"} %>
   <%= f.input :last_name, as: :hidden, input_html: {value: "n/a"} %>
 <%= f.submit class: "btn btn-primary" %>

@@ -1,16 +1,16 @@
 <div class="break">
-<div id="about" class="jumbotron text-center bg-orange">
-
-  <% if user_signed_in? %>
-  <h1>Hello <%= current_user.first_name == "n/a" ? current_user.company_name.titleize : current_user.first_name.titleize %>, Welcome to PengWin!</h1>
-  <% else %>
-  <h1>Welcome to PengWin</h1>
-  <% end %>
-  <p>You got to be in it to win it</p>
-  <form>
-    <label>Subscribe to our newsletter:</label><br>
-    <input type="email" placeholder="e.g. john@doe.com">
-    <input class="btn btn-danger" type="submit" value="Subscribe">
-  </form>
-</div>
+  <div id="about" class="jumbotron text-center bg-orange">
+  
+    <% if user_signed_in? %>
+    <h1>Hello <%= current_user.first_name == "n/a" ? current_user.company_name.titleize : current_user.first_name.titleize %>, Welcome to PengWin!</h1>
+    <% else %>
+    <h1>Welcome to PengWin</h1>
+    <% end %>
+    <p>You got to be in it to win it</p>
+    <form>
+      <label>Subscribe to our newsletter:</label><br>
+      <input type="email" placeholder="e.g. john@doe.com">
+      <input class="btn btn-danger" type="submit" value="Subscribe">
+    </form>
+  </div>
 </div>

@@ -8,9 +8,6 @@ class EntriesController < ApplicationController
     @entry          = Entry.new entry_params
     @entry.contest  = @contest
     @entry.user     = current_user
-    # entry = Entry.new(entered: params[:entry][:entered], contest: contest, user: current_user)
-    # @entry.contest = @contest
-    # @entry.user = current_user
     respond_to do |format|
       if @entry.save
         format.html { redirect_to contest_path(@contest),
@@ -39,9 +36,9 @@ class EntriesController < ApplicationController
 
   private
 
-  def entry
-    # @entry ||= current_user.entries.find params[:id]
-  end
+  # def entry
+  #   # @entry ||= current_user.entries.find params[:id]
+  # end
 
   def find_contest
     @contest ||= Contest.find params[:contest_id]

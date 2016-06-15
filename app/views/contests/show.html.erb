@@ -19,17 +19,8 @@
 
   <!-- Portfolio Item Row -->
   <div class="row">
-
     <div class="col-md-8">
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <!-- <ol class="carousel-indicators">
-          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li> -->
-        </ol>
-
-
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
           <div class="item active" style="">
@@ -38,16 +29,7 @@
             <%= image_tag @contest.image.url, class: "img-responsive" %>
             <% end %>
           </div>
-
         </div>
-
-        <!-- Controls -->
-        <!-- <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        </a> -->
       </div>
     </div>
 
@@ -67,10 +49,6 @@
       <%= "Finished" %>
       <% end %>
 
-      <% if can? :edit, @contest %>
-      <%= link_to "Edit", edit_contest_path(@contest) %>
-      <% end %>
-
       <% if can? :destroy, @contest %>
       <%= link_to "Delete", contest_path(@contest), method: :delete, data: {confirm: "Are you sure?"} %>
       <% end %>
@@ -86,7 +64,6 @@
 
       <% user_entry = @contest.entry_for(current_user) %>
 
-
       <% if user_entry && user_entry.entered? %>
       <%= link_to "Enter Contest", contest_entry_path(@contest, user_entry, {entry: {entered: true}}), method: :patch  %>
       <% end %>
@@ -96,7 +73,6 @@
       <% if @contest.end_date && @contest.end_date >= DateTime.now %>
       <a class="btn btn-primary" data-popup-open="popup-3" href="#"><strong>Enter Contest</strong></a>
 
-
       <div class="popup" data-popup="popup-3">
         <div class="popup-inner">
           <h2>Awesome! You are about to enter the contest to win: <%=  "#{@contest.prize}"%></h2>
@@ -105,51 +81,29 @@
           <span><%= link_to "Enter!", contest_entries_path(@contest, {entry: {entered: true}}), method: :post, class: "btn btn-primary", :'data-popup-open' => 'popup-3' %></span>
 
           <span><a data-popup-close="popup-3" href="#", class="btn btn-primary">Maybe later</a></span>
-
-
           <div class="addthis_sharing_toolbox"></div>
         </div>
-
       </div>
-
       <div class="addthis_sharing_toolbox"></div>
       <% end %>
       <% end %>
-
-
-
     </div>
   </div>
 
-
   <% if @contest.end_date && @contest.end_date >= DateTime.now %>
   <% d = @contest.end_date - 25200 %>
-  <p><% d.strftime("%Y/%m/%d %H:%M")  %></p>
+  <p><% d.strftime("%Y/%m/%d %H:%M") %></p>
   <% else %>
 
   <h2>The winner is:</h2>
-  <%= render "/entries/entries", entries: @contest.entries %>
-
+    <%= render "/entries/entries", entries: @contest.entries %>
   <% end %>
 
-
-  <!-- /.row -->
-
-  <!-- Related Projects Row -->
   <div class="row">
 
     <div class="col-lg-12">
-      <!-- <h3 class="page-header">Related Projects</h3> -->
     </div>
 
-    <div id="contest_images">
-      <% @contest.images.each do |i| %>
-      <div class="image">
-        <%= image_tag i.image_url.to_s %>
-      </div>
-      <% end %>
-    </div>
-    <%# end %>
   </div>
 </div>
 </div>

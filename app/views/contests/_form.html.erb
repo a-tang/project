@@ -4,30 +4,21 @@
   <%= f.input :prize %>
   <%= f.input :end_date, collection: ["3 days", "5 days", "7 days", "10 days"] %>
   <%= f.label :category %>
+
   <br>
+
   <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
+  
   <br>
+
   <h2>Upload image</h2>
 
-<div id="user_images">
-  <%= f.file_field :image%>
-</div>
+  <div id="user_images">
+    <%= f.file_field :image%>
+  </div>
 
-<br>
+  <br>
+
 <%= f.submit class: "btn btn-primary" %>
 
 <% end %>
-
-<!--
-<script>
-$(function() {
-  $( "#datepicker" ).datepicker({
-    inline: true
-  });
-});
-</script> -->
-
-
-
-
-<%#= f.input :end_date, as: :string, input_html: {id: "datepicker"}  %>

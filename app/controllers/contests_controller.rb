@@ -4,31 +4,22 @@ class ContestsController < ApplicationController
 
   def new_featured
     @contest = Contest.new
-    1.times { @contest.user_images.build }
   end
 
   def new
     @contest = Contest.new
-    1.times { @contest.user_images.build }
   end
 
   def create
-
-    @contest = Contest.new contest_params
-    @contest.user = current_user
+    @contest          = Contest.new contest_params
+    @contest.user     = current_user
     @contest.end_date = DateTime.now + params[:contest][:end_date].to_i.days
     if @contest.save
-        if params[:images]
-            params[:images].each { |image|
-              @contest.create(image: image)
-            }
-        end
       redirect_to customer_contests_path, notice: "Contest created successfully!"
     else
-      flash[:alert] = "Problem!"
+      flash[:alert] = "There is a problem!"
       render :new
     end
-
   end
 
   def show
@@ -45,14 +36,12 @@ class ContestsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-    @contest = Contest.new contest_params
-    @contest.user = current_user
+    @contest          = Contest.new contest_params
+    @contest.user     = current_user
     @contest.end_date = DateTime.now + params[:contest][:end_date].to_i.days
-
     if @contest.update contest_params
       redirect_to customer_contests_path, notice: "Contest created successfully!"
     else
@@ -61,7 +50,7 @@ class ContestsController < ApplicationController
   end
 
   def destroy
-    @contest.delete
+    @contest.destroy
     redirect_to contests_path
   end
 
@@ -74,18 +63,16 @@ class ContestsController < ApplicationController
       flash[:alert] = "Problem!"
       render @contest
     end
-
   end
 
   private
 
   def contest_params
-    contest_params = params.require(:contest).permit(:title, :body, :image, :prize, :end_date, :featured, :category_id, :published, :user_id, {image:[]}, user_images_attributes: [:_destroy, :image])
+    contest_params = params.require(:contest).permit(:title, :body, :image, :prize, :end_date, :featured, :category_id, :published, :user_id, {image:[]})
   end
 
   def find_contest
     @contest = Contest.find params[:id]
   end
-
 
 end
