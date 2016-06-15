@@ -1,36 +1,27 @@
+<ul class="nav navbar-nav navbar text-center">
+  <%= link_to "Home", root_path %>
+  |
+  <%= link_to "About", about_path %>
+  |
+  <%= link_to "Index", contests_path %>
+  |
+  <%= link_to "Create Contest", new_contest_path %>
+  |
+  <% if user_signed_in? %>
 
-<%= link_to "Home", root_path %>
-|
-<%= link_to "About", about_path %>
-|
-<%= link_to "Index", contests_path %>
-|
-<%= link_to "Create Contest", new_contest_path %>
-|
-<%= link_to "User dashboard", customer_contests_path %>
-|
-<%= link_to "New customer", new_customer_path %>
-|
-<%= link_to "Create Featured Contest", new_featured_contests_path	 %>
-|
-<% if user_signed_in? %>
+  Hello <%= current_user.first_name == "n/a" ? current_user.company_name.titleize : current_user.first_name.titleize %>
+  |
+  <%= link_to "Edit User", edit_user_path(current_user) %>
 
-Hello <%= current_user.first_name == "n/a" ? current_user.company_name.titleize : current_user.first_name.titleize %>
-|
-<%= link_to "Edit User", edit_user_path(current_user) %>
-
-
-<%= link_to "Edit User", edit_user_path(current_user) %>
-
-<%= link_to "Log out", sessions_path, method: :delete %>
-<% else %>
-<%= link_to "Sign In", new_session_path %>
-|
-<%= link_to "Sign In With Twitter", sign_in_with_twitter_path %>
-|
-<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-|
-<%= link_to "Sign Up", new_user_path %>
+  <%= link_to "Log out", sessions_path, method: :delete %>
+  <% else %>
+  <%= link_to "Sign In", new_session_path %>
+  |
+  <%= link_to "Sign In With Twitter", sign_in_with_twitter_path %>
+  |
+  <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  |
+  <%= link_to "Sign Up", new_user_path %>
 </ul>
 
 <a data-popup-open="popup-1" href="#"><strong>Sign In</strong></a>
@@ -58,7 +49,6 @@ Hello <%= current_user.first_name == "n/a" ? current_user.company_name.titleize 
         </div>
       </div>
 
-
       <div class="col-sm-6">
         <%= simple_form_for :session, {url: sessions_path } do |f| %>
         <%= f.input :email, label: false, placeholder: 'Email', required: true, input_html: { class: "form-control-modal"} %>
@@ -78,9 +68,8 @@ Hello <%= current_user.first_name == "n/a" ? current_user.company_name.titleize 
 
       <div>
 
-
         <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
       </div>
     </div>
   </div>
-  <% end %>
+<% end %>

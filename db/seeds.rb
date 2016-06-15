@@ -15,7 +15,7 @@ end
 
 categories = Category.all
 
-20.times do
+10.times do
   Contest.create(title:     Faker::Commerce.product_name,
                 body:       Faker::Lorem.paragraph,
                 prize:      Faker::Team.name,
@@ -23,4 +23,5 @@ categories = Category.all
                 image:      Faker::Avatar.image,
                 end_date:     Faker::Date.between(7.days.from_now, Date.today),
                 user:       User.create(password: "a", password_confirmation: "a", company_name: Faker::StarWars.droid, company_address: Faker::StarWars.planet, email: Faker::Internet.email, company_website: Faker::Internet.safe_email, company_phone_number: Faker::PhoneNumber.phone_number))
+
 end

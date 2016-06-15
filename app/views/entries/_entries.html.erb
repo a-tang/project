@@ -1,0 +1,3 @@
+<% entries.order("created_at desc").each_with_index do |ans, index| %>
+  <%= render("/entries/entry", entry: ans) if index == 0 %>
+<% end %>

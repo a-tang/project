@@ -1,13 +1,15 @@
 <div class="container-fluid">
 
   <h2>Live Contests</h2>
-  <table class="table table-striped" id="admin-table">
+
+  <table class="table table-hover" id="admin-table">
+
     <thead>
       <tr>
-        <th>Contests</th>
-        <th>Actions</th>
-        <th>Time Ending</th>
-        <th>Number of entries</th>
+        <th class="col-md-4 col-sm-4">Contests</th>
+        <th class="col-md-3">Actions</th>
+        <th class="col-md-2">Time Ending</th>
+        <th class="col-md-2 col-sm-2">Number of entries</th>
       </tr>
     </thead>
     <tbody>
@@ -36,7 +38,7 @@
             <%= paginate @live, param_name: :live_page %>
             <%= page_entries_info @live %>
           </tr>
-          
+
         </tbody>
       </table>
     </div>

@@ -7,13 +7,68 @@ $border-radius-base: 5px;
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import url(https://fonts.googleapis.com/css?family=Abel);
 
 body {
-  margin-bottom: 10%;
+  font-family: 'Abel', sans-serif;  margin-top: 45px;
+  margin-bottom: 300px;
+  // width: 66%;
+  margin: 0 auto;
+
 }
 
+.alert.alert-danger {
+  text-align: center;
+}
+
+.alert.alert-success {
+  width: 100%;
+  text-align: center;
+
+}
+
+
+  //
+  // background: #4b6cb7; /* fallback for old browsers */
+  // background: -webkit-linear-gradient(to left, #4b6cb7 , #182848); /* Chrome 10-25, Safari 5.1-6 */
+  // background: linear-gradient(to left, #4b6cb7 , #182848); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+.logo {
+  margin-top: 10px;
+  font-size: 2em;
+}
+
+ .jumbotron {
+  margin-bottom: 0px;
+
+  background: #FF8008; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #FF8008 , #FFC837); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #FF8008 , #FFC837); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ }
+
+ .break {
+     text-align:center;
+     font-weight:bold;
+     background:rgba(255,0,0, 0.5);
+    //  margin-left:-100%;
+    //  margin-right:-100%;
+     width: 100%;
+ }
+
+.container {
+  margin-top: 30px;
+  background-color: white;
+  width: 66%;
+  .container {
+    width: 100%;
+
+  }
+}
+
+
 footer {
-    margin: 510px 0;
+    margin: 50px 0;
 }
 
 
@@ -33,20 +88,20 @@ footer {
         height: 70%;
     }
 }
-
+//
 .navbar {
-  height: 55px;
-  background-color: #25A3B2;
+  min-height: 55px;
+  width: 100%;
 }
-
-.footer-text {
-  color: #D0D0D0;
-  margin: 10px 0 0 0;
-
-  a {
-    color: #0F0F0F;
-  }
-}
+//
+// .footer-text {
+//   color: #D0D0D0;
+//   margin: 10px 0 0 0;
+//
+//   a {
+//     color: #0F0F0F;
+//   }
+// }
 
 .ui-datepicker .ui-icon { width: 32px; height: 32px;
       background: image_path("prevNext.png")
@@ -394,7 +449,7 @@ footer {
 }
 
 .form-control {
-  width: 40%;
+
   margin-bottom: 5px;
 }
 
@@ -408,4 +463,74 @@ footer {
 
 .index_image {
   text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+td, th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+.table > tbody > tr > td {
+  padding-left: 50%;
+}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	tr { border: 1px solid #ccc; }
+
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+    text-align: center;
+	}
+
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "Contests"; }
+	td:nth-of-type(2):before { content: "Actions"; }
+	td:nth-of-type(3):before { content: "Time Ending"; }
+	td:nth-of-type(4):before { content: "Number of entries"; }
+  td:nth-of-type(5):before { content: "Publish"; }
+
 }

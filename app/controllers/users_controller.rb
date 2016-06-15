@@ -19,9 +19,9 @@ class UsersController < ApplicationController
 
   def create
 
-     @user = User.new user_params
+     @user                = User.new user_params
      if @user.save
-       session[:user_id] = @user.id
+       session[:user_id]  = @user.id
        @user.generate_account_verification_data
        AccountVerificationsMailer.send_verification_instructions(@user).deliver_later
        render "users/account_verifications/create"
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
    end
 
    def destroy
-    user = User.find_by_id params[:id]
+    user              = User.find_by_id params[:id]
     session[:user_id] = nil
     user.destroy
     redirect_to root_path, notice: "User deleted!"
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   private
 
   def contests
-    @user = User.find(params[:id])
+    @user     = User.find(params[:id])
     @contests = @user.contests
   end
 
