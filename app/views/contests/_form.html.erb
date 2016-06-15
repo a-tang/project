@@ -1,3 +1,5 @@
+<div class="container">
+
 <%= simple_form_for @contest, :html => {:multipart => true } do |f| %>
   <%= f.input :title %>
   <%= f.input :body %>
@@ -8,7 +10,7 @@
   <br>
 
   <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
-  
+
   <br>
 
   <h2>Upload image</h2>
@@ -22,3 +24,5 @@
 <%= f.submit class: "btn btn-primary" %>
 
 <% end %>
+
+</div>

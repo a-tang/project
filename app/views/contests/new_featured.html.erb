@@ -1,24 +1,28 @@
+<div class="container">
+
 <h1>Featured Contest</h1>
-<%= simple_form_for @contest, :html => {:multipart => true } do |f| %>
-  <%= f.input :title %>
-  <%= f.input :body %>
-  <%= f.input :prize %>
-  <%= f.input :featured, as: :hidden, input_html: {value: "true"} %>
-  <%= f.input :end_date, collection: ["3 days", "5 days", "7 days", "10 days"] %>
-  <%= f.label :category %>
-  <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
+  <%= simple_form_for @contest, :html => {:multipart => true } do |f| %>
+    <%= f.input :title %>
+    <%= f.input :body %>
+    <%= f.input :prize %>
+    <%= f.input :featured, as: :hidden, input_html: {value: "true"} %>
+    <%= f.input :end_date, collection: ["3 days", "5 days", "7 days", "10 days"] %>
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
 
-  <h2>Upload image</h2>
+    <h2>Upload image</h2>
 
-  <div id="user_images">
-    <%= f.label :image, "Upload image:" %>
-    <%= f.file_field :image, multiple: true, name: "contest[image]" %>
-  </div>
+    <div id="user_images">
+      <%= f.label :image, "Upload image:" %>
+      <%= f.file_field :image, multiple: true, name: "contest[image]" %>
+    </div>
 
-  <div class="links">
-    <%= link_to_add_association 'Add image', f, :user_image %>
-  </div>
+    <div class="links">
+      <%= link_to_add_association 'Add image', f, :user_image %>
+    </div>
 
-<%= f.submit class: "btn btn-primary" %>
+  <%= f.submit class: "btn btn-primary" %>
 
-<% end %>
+  <% end %>
+
+</div>
