@@ -22,12 +22,9 @@ Rails.application.routes.draw do
       get "new_featured" => "contests#new_featured", as: :new_featured, on: :collection
     end
 
-
-
   get "/users/new_customer" => "users#new_customer", as: :new_customer
   get "/users/edit_customer" => "users#edit_customer", as: :edit_customer
   # delete "/users/edit_customer" => "users#edit_customer", as: :delete_customer
-
 
   scope module: 'users' do
     resources :password_resets, only: [:new, :create, :edit, :update]
@@ -40,6 +37,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
   end
+
+  resources :messages
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
