@@ -53,9 +53,9 @@ class User < ActiveRecord::Base
                        provider:         "facebook",
                        uid:              omniauth_data["uid"],
                        password:         SecureRandom.hex(16),
-                       twitter_token:    omniauth_data["credentials"]["token"],
-                       twitter_secret:   omniauth_data["credentials"]["secret"],
-                       twitter_raw_data: omniauth_data)
+                       facebook_token:    omniauth_data["credentials"]["token"],
+                       facebook_secret:   omniauth_data["credentials"]["secret"],
+                       facebook_raw_data: omniauth_data)
     end
     user
   end
