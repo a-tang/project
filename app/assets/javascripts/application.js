@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery-ui
+//= require jquery-fileupload/basic
+//= require catpants
 //= require bootstrap/
 //= require chosen-jquery
 //= require cocoon

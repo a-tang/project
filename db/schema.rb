@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524004449) do
+ActiveRecord::Schema.define(version: 20160616184902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,23 @@ ActiveRecord::Schema.define(version: 20160524004449) do
   add_index "competitions", ["category_id"], name: "index_competitions_on_category_id", using: :btree
   add_index "competitions", ["user_id"], name: "index_competitions_on_user_id", using: :btree
 
+  create_table "contests", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "prize"
+    t.datetime "end_date"
+    t.boolean  "featured",    default: false
+    t.string   "image"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.boolean  "published",   default: false
+  end
+
+  add_index "contests", ["category_id"], name: "index_contests_on_category_id", using: :btree
+  add_index "contests", ["user_id"], name: "index_contests_on_user_id", using: :btree
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -56,14 +73,35 @@ ActiveRecord::Schema.define(version: 20160524004449) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
+  create_table "entries", force: :cascade do |t|
+    t.integer  "contest_id"
+    t.integer  "user_id"
+    t.boolean  "entered",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "entries", ["contest_id"], name: "index_entries_on_contest_id", using: :btree
+  add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_images", force: :cascade do |t|
     t.string   "image"
     t.integer  "competition_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "contest_id"
   end
 
   add_index "user_images", ["competition_id"], name: "index_user_images_on_competition_id", using: :btree
+  add_index "user_images", ["contest_id"], name: "index_user_images_on_contest_id", using: :btree
 
   create_table "user_photos", force: :cascade do |t|
     t.string   "photo"
@@ -87,10 +125,33 @@ ActiveRecord::Schema.define(version: 20160524004449) do
     t.datetime "password_reset_requested_at"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
+    t.string   "user_type"
+    t.string   "company_name"
+    t.string   "company_address"
+    t.text     "company_overview"
+    t.string   "company_website"
+    t.string   "company_phone_number"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "twitter_token"
+    t.string   "twitter_secret"
+    t.text     "twitter_raw_data"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.string   "images"
   end
+
+  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", using: :btree
 
   add_foreign_key "competitions", "categories"
   add_foreign_key "competitions", "users"
+  add_foreign_key "contests", "categories"
+  add_foreign_key "contests", "users"
+  add_foreign_key "entries", "contests"
+  add_foreign_key "entries", "users"
   add_foreign_key "user_images", "competitions"
+  add_foreign_key "user_images", "contests"
   add_foreign_key "user_photos", "competitions"
 end

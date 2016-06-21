@@ -2,15 +2,17 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.New
+    user ||= User.new
 
     can :manage, :all if user.admin?
 
-    alias_action :create, :read, :edit, :update, :to => :cru
+    alias_action :create, :read, :update, :to => :cru
 
-    can :cru, Competition do |comp|
+    can :cru, Contest do |comp|
       comp.user == user && user.persisted?
     end
+
+    can :read, :all
 
 
     # Define abilities for the passed in user here. For example:

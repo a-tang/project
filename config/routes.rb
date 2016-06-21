@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+
+  get "/auth/facebook", as: :sign_in_with_facebook
+  get "/auth/facebook/callback" => "callbacks#facebook"
+
+  get "/auth/twitter", as: :sign_in_with_twitter
+  get "/auth/twitter/callback" => "callbacks#twitter"
+
+  resources :entries
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
@@ -6,8 +14,17 @@ Rails.application.routes.draw do
   root "home#index"
   get "/about" => "home#about"
 
-  resources :competitions
   resources :users, only: [:new, :create, :edit, :update, :destroy]
+
+  resources :contests  do
+    patch "publish" => "contests#publish", as: :publish
+    resources :entries, only: [:create, :update, :destroy]
+    get "new_featured" => "contests#new_featured", as: :new_featured, on: :collection
+  end
+
+  get "/users/new_customer" => "users#new_customer", as: :new_customer
+  get "/users/edit_customer" => "users#edit_customer", as: :edit_customer
+  # delete "/users/edit_customer" => "users#edit_customer", as: :delete_customer
 
   scope module: 'users' do
     resources :password_resets, only: [:new, :create, :edit, :update]
@@ -15,9 +32,15 @@ Rails.application.routes.draw do
     resources :account_verifications, only: [:new, :create, :edit]
   end
 
+  get "/customer/contests" => "customer#contests", as: :customer_contests
+
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
   end
+
+  resources :messages
+
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
