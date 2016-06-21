@@ -13,4 +13,3 @@
 /tmp
 /config/initializers/app_keys.rb
 .byebug_history
-config/secrets.yml
