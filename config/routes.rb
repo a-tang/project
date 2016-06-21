@@ -16,11 +16,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :edit, :update, :destroy]
 
-    resources :contests  do
-      patch "publish" => "contests#publish", as: :publish
-      resources :entries, only: [:create, :update, :destroy]
-      get "new_featured" => "contests#new_featured", as: :new_featured, on: :collection
-    end
+  resources :contests  do
+    patch "publish" => "contests#publish", as: :publish
+    resources :entries, only: [:create, :update, :destroy]
+    get "new_featured" => "contests#new_featured", as: :new_featured, on: :collection
+  end
 
   get "/users/new_customer" => "users#new_customer", as: :new_customer
   get "/users/edit_customer" => "users#edit_customer", as: :edit_customer
@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   end
 
   resources :messages
+
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

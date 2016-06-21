@@ -2,15 +2,10 @@
 
   <h1>About</h1>
 
-  <%= simple_form_for @message do |f| %>
-    <%= f.input :name %>
-    <%= f.input :email %>
-    <%= f.input :message %>
-    <br>
+  <p>A web application that promotes businesses for free and at the same time build awareness and online presence through online contests. The general users can share the contests through popular social media platforms to increase their chances of winning.</p>
 
-  <%= f.submit class: "btn btn-primary" %>
 
-  <% end %>
+<%= link_to 'Leave a message', new_message_path %>
 
 
 </div>
