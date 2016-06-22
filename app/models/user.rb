@@ -52,10 +52,8 @@ class User < ActiveRecord::Base
                        last_name:        extract_last_name(full_name),
                        provider:         "facebook",
                        uid:              omniauth_data["uid"],
-                       password:         SecureRandom.hex(16),
-                       facebook_token:    omniauth_data["credentials"]["token"],
-                       facebook_secret:   omniauth_data["credentials"]["secret"],
-                       facebook_raw_data: omniauth_data)
+                       password:         SecureRandom.hex(16))
+
     end
     user
   end
