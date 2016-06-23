@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'omniauth-google'
+gem "omniauth-google-oauth2"
 gem 'jquery-fileupload-rails'
 gem 'omniauth-facebook'
 gem 'twitter'

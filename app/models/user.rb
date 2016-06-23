@@ -58,13 +58,13 @@ class User < ActiveRecord::Base
     user
   end
 
-  def self.find_or_create_with_google(omniauth_data)
-  user = User.where(provider: "google", uid: omniauth_data["uid"]).first
+  def self.find_or_create_with_google_oauth2(omniauth_data)
+  user = User.where(provider: ":google_oauth2", uid: omniauth_data["uid"]).first
   unless user
     full_name = omniauth_data["info"]["name"]
     user = User.create!(first_name:      extract_first_name(full_name),
                        last_name:        extract_last_name(full_name),
-                       provider:         "google",
+                       provider:         ":google_oauth2",
                        uid:              omniauth_data["uid"],
                        password:         SecureRandom.hex(16))
 

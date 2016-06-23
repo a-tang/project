@@ -186,10 +186,9 @@ GEM
       rack (>= 1.0, < 3)
     omniauth-facebook (2.0.1)
       omniauth-oauth2 (~> 1.2)
-    omniauth-google (1.0.2)
-      multi_json
-      omniauth (~> 1.0)
-      omniauth-oauth
+    omniauth-google-oauth2 (0.2.6)
+      omniauth (> 1.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-oauth (1.1.0)
       oauth
       omniauth (~> 1.0)
@@ -356,7 +355,7 @@ DEPENDENCIES
   letter_opener
   mini_magick
   omniauth-facebook
-  omniauth-google
+  omniauth-google-oauth2
   omniauth-twitter
   pg (~> 0.15)
   pry

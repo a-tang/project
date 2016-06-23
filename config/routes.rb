@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get "/auth/twitter", as: :sign_in_with_twitter
   get "/auth/twitter/callback" => "callbacks#twitter"
 
-  get "/auth/google", as: :sign_in_with_google
-  get "/auth/google/callback" => "callbacks#google"
+  get "/auth/google_oauth2", as: :sign_in_with_google
+  get "/auth/google_oauth2/callback" => "callbacks#google_oauth2"
 
   resources :entries
   # The priority is based upon order of creation: first created -> highest priority.

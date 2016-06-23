@@ -14,8 +14,8 @@ class CallbacksController < ApplicationController
     # render json: request.env['omniauth.auth']
   end
 
-  def google
-    user              = User.find_or_create_with_google request.env['omniauth.auth']
+  def google_oauth2
+    user              = User.find_or_create_with_google_oauth2 request.env['omniauth.auth']
     session[:user_id] = user.id
     redirect_to root_path, notice: "Thank you for signing in with Google!"
     # render json: request.env['omniauth.auth']
