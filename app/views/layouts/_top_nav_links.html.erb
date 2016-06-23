@@ -50,7 +50,7 @@ Hello <%= current_user.first_name == "n/a" ? current_user.company_name.titleize 
       <span class="fa fa-twitter"></span><span>Sign In With Twitter</span>
       <% end %>
 
-      <a class="btn btn-block btn-social btn-google">
+      <%= link_to sign_in_with_google_path, class:"btn btn-block btn-social btn-google" do %>
         <span class="fa fa-google-plus-square"></span> Sign in with Google</a>
         <br>
         <div class="form-group row_modal">

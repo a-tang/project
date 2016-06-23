@@ -9,3 +9,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   ENV['facebook_application_id'],
   ENV['facebook_secret_app_key']
 end
+
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :google,
+  ENV['google_client_id'],
+  ENV['google_client_secret_key']
+end
