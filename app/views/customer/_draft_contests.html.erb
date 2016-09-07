@@ -1,9 +1,6 @@
 <div class="container-fluid">
-
   <h2>Draft Contests</h2>
-
   <table class="table table-hover" id="admin-table">
-
     <thead>
       <tr>
         <th class="col-md-4 col-sm-4">Contests</th>
@@ -17,29 +14,22 @@
         <tr>
           <td><%= link_to c.title, contest_path(c) %></td>
           <td><%= link_to "Show", contest_path(c) %> |
-
-            <%= link_to "Edit", edit_contest_path(c) %> |
-
-            <%= link_to "Delete", contest_path(c),
-            data: {confirm: "Are you sure?"},
-            method: :delete%>
+              <%= link_to "Edit", edit_contest_path(c) %> |
+              <%= link_to "Delete", contest_path(c),
+              data: {confirm: "Are you sure?"},
+              method: :delete%>
           </td>
-
-          <td> <% if c.published == true %>
-            <% else %>
-            <%= link_to "Publish", contest_publish_path(c), method: :patch %>
-            <% end %>
-
+          <td><% if c.published == true %>
+              <% else %>
+                <%= link_to "Publish", contest_publish_path(c), method: :patch %>
+              <% end %>
           </td>
-        </div>
-        <% end %>
-        <%= paginate @draft, param_name: :draft_page %>
-        <%= page_entries_info @draft %>
+      </div>
+          <% end %>
+          <%= paginate @draft, param_name: :draft_page %>
+          <%= page_entries_info @draft %>
       </tr>
     </tbody>
   </table>
   <p><%= link_to "Add", new_contest_path, class: "btn btn-primary"%></p>
-
-
-
 </div>

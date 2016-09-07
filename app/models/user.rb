@@ -29,45 +29,43 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_with_twitter(omniauth_data)
-  user = User.where(provider: "twitter", uid: omniauth_data["uid"]).first
-  unless user
-    full_name = omniauth_data["info"]["name"]
-    user = User.create!(first_name:      extract_first_name(full_name),
-                       last_name:        extract_last_name(full_name),
-                       provider:         "twitter",
-                       uid:              omniauth_data["uid"],
-                       password:         SecureRandom.hex(16),
-                       twitter_token:    omniauth_data["credentials"]["token"],
-                       twitter_secret:   omniauth_data["credentials"]["secret"],
-                       twitter_raw_data: omniauth_data)
+    user = User.where(provider: "twitter", uid: omniauth_data["uid"]).first
+    unless user
+      full_name = omniauth_data["info"]["name"]
+      user = User.create!(first_name:      extract_first_name(full_name),
+                         last_name:        extract_last_name(full_name),
+                         provider:         "twitter",
+                         uid:              omniauth_data["uid"],
+                         password:         SecureRandom.hex(16),
+                         twitter_token:    omniauth_data["credentials"]["token"],
+                         twitter_secret:   omniauth_data["credentials"]["secret"],
+                         twitter_raw_data: omniauth_data)
     end
     user
   end
 
   def self.find_or_create_with_facebook(omniauth_data)
-  user = User.where(provider: "facebook", uid: omniauth_data["uid"]).first
-  unless user
-    full_name = omniauth_data["info"]["name"]
-    user = User.create!(first_name:      extract_first_name(full_name),
-                       last_name:        extract_last_name(full_name),
-                       provider:         "facebook",
-                       uid:              omniauth_data["uid"],
-                       password:         SecureRandom.hex(16))
-
+    user = User.where(provider: "facebook", uid: omniauth_data["uid"]).first
+    unless user
+      full_name = omniauth_data["info"]["name"]
+      user = User.create!(first_name:      extract_first_name(full_name),
+                         last_name:        extract_last_name(full_name),
+                         provider:         "facebook",
+                         uid:              omniauth_data["uid"],
+                         password:         SecureRandom.hex(16))
     end
     user
   end
 
   def self.find_or_create_with_google_oauth2(omniauth_data)
-  user = User.where(provider: ":google_oauth2", uid: omniauth_data["uid"]).first
-  unless user
-    full_name = omniauth_data["info"]["name"]
-    user = User.create!(first_name:      extract_first_name(full_name),
-                       last_name:        extract_last_name(full_name),
-                       provider:         ":google_oauth2",
-                       uid:              omniauth_data["uid"],
-                       password:         SecureRandom.hex(16))
-
+    user = User.where(provider: ":google_oauth2", uid: omniauth_data["uid"]).first
+    unless user
+      full_name = omniauth_data["info"]["name"]
+      user = User.create!(first_name:      extract_first_name(full_name),
+                         last_name:        extract_last_name(full_name),
+                         provider:         ":google_oauth2",
+                         uid:              omniauth_data["uid"],
+                         password:         SecureRandom.hex(16))
     end
     user
   end
@@ -77,11 +75,11 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-   "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}"
   end
 
   def user_full_name
-   user ? user.full_name : ""
+    user ? user.full_name : ""
   end
 
   def user_company_name

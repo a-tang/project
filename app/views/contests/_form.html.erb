@@ -1,28 +1,18 @@
 <div class="container">
-
 <%= simple_form_for @contest, :html => {:multipart => true } do |f| %>
   <%= f.input :title %>
   <%= f.input :body %>
   <%= f.input :prize %>
   <%= f.input :end_date, collection: ["3 days", "5 days", "7 days", "10 days"] %>
   <%= f.label :category %>
-
   <br>
-
   <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
-
   <br>
-
   <h2>Upload image</h2>
-
   <div id="user_images">
     <%= f.file_field :image%>
   </div>
-
   <br>
-
-<%= f.submit class: "btn btn-primary" %>
-
+  <%= f.submit class: "btn btn-primary" %>
 <% end %>
-
 </div>

@@ -36,10 +36,6 @@ class EntriesController < ApplicationController
 
   private
 
-  # def entry
-  #   # @entry ||= current_user.entries.find params[:id]
-  # end
-
   def find_contest
     @contest ||= Contest.find params[:contest_id]
   end

@@ -1,21 +1,17 @@
 <div class="container">
-
-<h1>Create Customer</h1>
-
-<%= simple_form_for @user do |f| %>
-  <%= f.input :company_name, required: true %>
-  <%= f.input :company_address, required: true %>
-  <%= f.input :company_overview %>
-  <%= f.input :company_website %>
-  <%= f.input :email %>
-  <%= f.input :company_phone_number, required: true %>
-  <%= f.input :password, required: true %>
-  <%= f.input :password_confirmation, required: true %>
-  <%= f.input :user_type, as: :hidden, input_html: {value: "customer"} %>
-  <%= f.input :first_name, as: :hidden, input_html: {value: "n/a"} %>
-  <%= f.input :last_name, as: :hidden, input_html: {value: "n/a"} %>
-<%= f.submit class: "btn btn-primary" %>
-
-<% end %>
-
+  <h1>Create Customer</h1>
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :company_name, required: true %>
+    <%= f.input :company_address, required: true %>
+    <%= f.input :company_overview %>
+    <%= f.input :company_website %>
+    <%= f.input :email %>
+    <%= f.input :company_phone_number, required: true %>
+    <%= f.input :password, required: true %>
+    <%= f.input :password_confirmation, required: true %>
+    <%= f.input :user_type, as: :hidden, input_html: {value: "customer"} %>
+    <%= f.input :first_name, as: :hidden, input_html: {value: "n/a"} %>
+    <%= f.input :last_name, as: :hidden, input_html: {value: "n/a"} %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
 </div>

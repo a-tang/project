@@ -24,7 +24,6 @@ class Contest < ActiveRecord::Base
   end
 
   def deadline
-
   end
 
 end
