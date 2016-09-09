@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'puma'
+gem 'fog'
 gem "omniauth-google-oauth2"
 gem 'jquery-fileupload-rails'
 gem 'omniauth-facebook'
