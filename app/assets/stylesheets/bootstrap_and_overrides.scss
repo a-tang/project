@@ -9,10 +9,29 @@ $border-radius-base: 5px;
 @import "font-awesome";
 @import url(https://fonts.googleapis.com/css?family=Abel);
 
+html {
+  height: 89%;
+}
 body {
   font-family: 'Abel', sans-serif;  margin-top: 45px;
   margin-bottom: 300px;
   margin: 0 auto;
+  height: 100%;
+}
+.message {
+  padding-top: 50px;
+}
+.container h1 {
+  padding-top: 20px;
+}
+.footer-container {
+  position: relative;;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
 .alert {
   margin-bottom: 0px;
@@ -61,15 +80,13 @@ background: linear-gradient(to left, #FF8008 , #FFC837); /* W3C, IE 10+/ Edge, F
  }
 
 .container {
+  height: 100%;
   margin-top: 30px;
   background-color: white;
   width: 66%;
   .container {
   width: 100%;
   }
-}
-footer {
-    margin: 50px 0;
 }
 @media(max-width:991px) {
     .customer-img,
