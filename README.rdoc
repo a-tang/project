@@ -1,28 +1,5 @@
-== README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A web application that promotes businesses for free and at the same time build awareness and online presence through online contests. The general users can share the contests through popular social media platforms to increase their chances of winning.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
+Built on Ruby on Rails 
 <tt>rake doc:app</tt>.
